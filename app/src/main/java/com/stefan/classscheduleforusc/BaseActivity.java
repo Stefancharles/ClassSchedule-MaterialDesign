@@ -15,7 +15,7 @@ import com.stefan.classscheduleforusc.utils.ToastUtils;
 
 
 /**
- * Created by stefan on 17-10-2.
+ * Created by stefan on 19-10-2.
  */
 
 public abstract class BaseActivity extends AppCompatActivity {

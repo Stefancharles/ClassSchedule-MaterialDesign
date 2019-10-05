@@ -170,11 +170,6 @@ public class EduHttpUtils {
                 .addHeader("Connection", "keep-alive")
 
 
-
-
-
-
-
                 .addParams("__EVENTTARGET", "xnd")
                 .addParams("__EVENTARGUMENT", "")
                 .addParams("__VIEWSTATE", Url.VIEWSTATE_POST_CODE)

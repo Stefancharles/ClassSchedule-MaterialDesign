@@ -37,6 +37,7 @@ public class ImptActivity extends BaseActivity implements
     ImptContract.Presenter mPresenter;
     private ImageView mIvCaptcha;
     private String mXh;
+    private String pwd;
     private DialogHelper mHelper;
     private EditTextLayout mEtlXh;
     private EditTextLayout mEtlPwd;
@@ -197,7 +198,7 @@ public class ImptActivity extends BaseActivity implements
     private void confirm() {
         //TODO 数据验证
         mXh = mEtlXh.getText().trim();
-        String pwd = mEtlPwd.getText().trim();
+        pwd = mEtlPwd.getText().trim();
         LogUtil.e(this, "passwd=" + pwd);
         String captcha = mEtlCaptcha.getText().trim();
 

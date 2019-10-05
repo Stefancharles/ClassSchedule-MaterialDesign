@@ -6,7 +6,7 @@ import com.stefan.classscheduleforusc.BuildConfig;
 
 /**
  * 日志工具<br>
- * Created by stefan on 17-4-8.
+ * Created by stefan on 19-10-4.
  */
 
 public class LogUtil {
