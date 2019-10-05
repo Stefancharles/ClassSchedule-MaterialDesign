@@ -1,4 +1,4 @@
-package com.stefan.classscheduleforusc.Retrofit2;
+package com.stefan.classscheduleforusc.data.http;
 import java.util.Map;
 
 import okhttp3.ResponseBody;

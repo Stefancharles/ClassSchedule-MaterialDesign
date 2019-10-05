@@ -202,7 +202,14 @@ public class ImptActivity extends BaseActivity implements
         LogUtil.e(this, "passwd=" + pwd);
         String captcha = mEtlCaptcha.getText().trim();
 
-        mPresenter.loadCourseTimeAndTerm(mXh, pwd, captcha);
+        ToastUtils.show("开始尝试登陆教务在线");
+
+        mPresenter.loginToUsc(mXh,pwd,captcha);
+
+
+
+
+        //mPresenter.loadCourseTimeAndTerm(mXh, pwd, captcha);
     }
 
     private void skip() {

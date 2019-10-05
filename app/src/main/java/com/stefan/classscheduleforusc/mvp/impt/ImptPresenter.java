@@ -3,6 +3,7 @@ package com.stefan.classscheduleforusc.mvp.impt;
 import android.graphics.Bitmap;
 
 import com.stefan.classscheduleforusc.R;
+import com.stefan.classscheduleforusc.data.http.retrofit2;
 import com.stefan.classscheduleforusc.app.Cache;
 import com.stefan.classscheduleforusc.app.app;
 import com.stefan.classscheduleforusc.data.bean.CourseTime;
@@ -26,6 +27,10 @@ import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * Created by stefan on 2019/10/03.
@@ -40,6 +45,7 @@ public class ImptPresenter implements ImptContract.Presenter {
     private String mNormalCourseHtml;
     private String mSelectYear;
     private String mSelectTerm;
+    private retrofit2 retrofit;
 
     public ImptPresenter(ImptContract.View imptView, String schoolUrl) {
         mImptView = imptView;
@@ -97,7 +103,7 @@ public class ImptPresenter implements ImptContract.Presenter {
     public void loadCourseTimeAndTerm(final String xh, String pwd, String captcha) {
         if (!verify(xh, pwd, captcha)) return;
 
-        mImptView.showImpting();
+        mImptView.showImpting();//view显示“导入中...”
         EduHttpUtils.newInstance().login(mSchoolUrl, xh, pwd, captcha, null, null,
                 new HttpCallback<String>() {
 
@@ -123,6 +129,37 @@ public class ImptPresenter implements ImptContract.Presenter {
                         mImptView.showErrToast(errMsg, true);
                     }
                 });
+
+    }
+
+    @Override
+    public void loginToUsc(String xh, String pwd,String captcha) {
+
+        if (!verify(xh, pwd, captcha)) return;
+        retrofit = new retrofit2();
+        retrofit.LoginToUSC(xh,pwd).enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                int type = retrofit.Getloginresponse(response);
+                if (type==1){
+                    // TODO: 2019/10/5 成功登陆教务在线，接下来导入课程表
+
+
+                    LogUtil.i(this, "成功状态值:" + type);
+                    ToastUtils.show("成功");
+
+                }else{
+                    LogUtil.i(this, "失败状态值:" + type);
+                    ToastUtils.show("失败，检查用户名或密码");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+
+            }
+        });
+
 
     }
 

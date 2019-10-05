@@ -29,7 +29,7 @@ import java.util.regex.Pattern;
 
 /**
  * GZU课程解析
- * Created by stefan on 17-10-19.
+ * Created by stefan on 19-10-4.
  */
 
 public class ParseCourse {

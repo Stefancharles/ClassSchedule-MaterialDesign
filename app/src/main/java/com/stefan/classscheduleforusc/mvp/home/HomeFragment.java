@@ -167,7 +167,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.View,
     }
 
     private void addSelectDialog() {
-        new DialogHelper().buildBottomListDialog(activity, new String[]{"手动添加", "方正课表", "导入分享"},
+        new DialogHelper().buildBottomListDialog(activity, new String[]{"手动添加", "在线导入", "导入分享"},
                 new DialogListener() {
                     @Override
                     public void onItemClick(DialogInterface dialog, int which) {
@@ -177,7 +177,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.View,
                                 userAdd();
                                 break;
                             case 1:
-                                fangZhengAdd();
+                                OnlineAdd();
                                 break;
                             case 2:
                                 scanQRCode();
@@ -202,7 +202,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.View,
         return false;
     }
 
-    private void fangZhengAdd() {
+    private void OnlineAdd() {
         startActivity(new Intent(activity, SchoolActivity.class));
     }
 

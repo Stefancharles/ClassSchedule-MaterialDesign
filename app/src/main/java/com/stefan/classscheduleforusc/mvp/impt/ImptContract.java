@@ -20,6 +20,8 @@ public interface ImptContract {
 
         void loadCourseTimeAndTerm(String xh, String pwd, String captcha);
 
+        void loginToUsc(String xh, String pwd,String captcha);
+
         void getCaptcha();
     }
 
